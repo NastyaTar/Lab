@@ -3,10 +3,16 @@
 #define min -77
 
 int main() {
-    int digit;
-    digit = 0;
+    int digit, result;
     scanf("%d", &digit);
     printf("1 - число входит в диапозон или 0 - не входит:");
     printf("\n%d", min <= digit && digit <= max);
+
+    int digit2;
+    printf("\nВведите число в десятичной системе: ");
+    scanf("%d", &digit2);
+    result = (digit2 >> (18 - 1)) & 1;
+    printf("В 18-ом месте числа %d бит %d", digit2, result);
+
     return 0;
 }
