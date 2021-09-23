@@ -5,11 +5,11 @@ int main() {
     float z1;
     float z2;
     float a;
-    scanf("%f", a);
-    z1 = roundf(((a + 2) / sqrtf(2 * a) - a * (sqrtf(2 * a) + 2) + 2 * (a - sqrtf(2 * a))) * (sqrtf(a) - sqrtf(2)) / (a + 2));
+    scanf("%f", &a);
+    z1 = ((a + 2) / sqrtf(2 * a) - a / (sqrtf(2 * a) + 2) + 2 / (a - sqrtf(2 * a))) * ((sqrtf(a) - sqrtf(2)) / (a + 2));
     z2 = (1 / (sqrtf(a) + sqrtf(2)));
     printf("\nz1= %f", z1);
     printf("\nz2= %f", z2);
 
-return 0;
+    return 0;
 }
