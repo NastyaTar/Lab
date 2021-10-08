@@ -19,8 +19,10 @@ enum Lamps {
     QUARTZLAMP
 };
 
-struct MP3 {
-    char state[2];
+struct MP3{
+    int state1:1;
+    int state2:1;
+    int state3:1;
 };
 
 int main() {
@@ -29,7 +31,6 @@ int main() {
     double pv[2];
     double pn[2];
     double ln[2];
-    char all[10];
     printf("%s\n", "Задание 1");
     printf("%s\n", NameLamp[HOLOGEN]);
 
@@ -52,51 +53,58 @@ int main() {
            lv[0], lv[1], pv[0], pv[1], pn[0], pn[1], ln[0], ln[1]);
 
     printf("\n%s\n", "Задание 3");//7
-    struct MP3 mp_3;
-    int i;
     printf("Введите число в 16-тиричной сс от 0 до 7 (начиная с 0х): ");
-    scanf("%s", mp_3.state);
+    char digit[5];
+    scanf("%s", digit);
+
     printf("Состояние МР3-проигрывателя диктофона:\n");
-    if (mp_3.state[2] == '1'){
-        i = 001;
-        printf("Воспроизведение выкл.\nПауза выкл.\nЗапис вкл.");}
-    else{
-        if (mp_3.state[2] == '2'){
-            i = 010;
-            printf("Воспроизведение выкл.\nПауза вкл.\nЗапис выкл.");}
-        else {
-            if (mp_3.state[2] == '3'){
-                i = 011;
-                printf("Воспроизведение выкл.\nПауза вкл.\nЗапис вкл.");}
-            else{
-                if (mp_3.state[2] == '4'){
-                    i = 100;
-                    printf("Воспроизведение вкл.\nПауза выкл.\nЗапис выкл.");}
-                else{
-                    if (mp_3.state[2] == '5'){
-                        i = 101;
-                        printf("Воспроизведение вкл.\nПауза выкл.\nЗапис вкл.");}
-                    else{
-                        if (mp_3.state[2] == '6'){
-                            i = 110;
-                            printf("Воспроизведение вкл.\nПауза вкл.\nЗапис выкл.");}
-                        else{
-                            if (mp_3.state[2] == '7'){
-                                i = 111;
-                                printf("Воспроизведение вкл.\nПауза вкл.\nЗапис вкл.");}
-                            else{
-                                if (mp_3.state[2] == '0'){
-                                    i = 000;
-                                    printf("Воспроизведение выкл.\nПауза выкл.\nЗапис выкл.");}
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    struct MP3 mp = {0, 0 , 0};
+    switch (digit[2]) {
+        case '0':
+            break;
+        case '1':
+            mp.state3 = 1;
+            break;
+        case '2':
+            mp.state2 = 1;
+            break;
+        case '3':
+            mp.state2 = 1;
+            mp.state3 = 1;
+            break;
+        case '4':
+            mp.state1 = 1;
+            break;
+        case '5':
+            mp.state1 = 1;
+            mp.state3 = 1;
+            break;
+        case '6':
+            mp.state1 = 1;
+            mp.state2 = 1;
+            break;
+        case '7':
+            mp.state1 = 1;
+            mp.state2 = 1;
+            mp.state3 = 1;
+            break;
+        default:
+            printf("Неправильно введено число");
+            return 0;}
+
+    if (mp.state1 == -1){
+        printf("Воспроизведение вкл.\n");}
+    else {
+        printf("Воспроизведение выкл.\n");}
+    if (mp.state2 == -1){
+        printf("Пауза вкл.\n");}
+    else {
+        printf("Пауза выкл.\n");}
+    if (mp.state3 == -1){
+        printf("Запись вкл.\n");}
+    else {
+        printf("Запись выкл.\n");}
 
     return 0;
 }
-
 
