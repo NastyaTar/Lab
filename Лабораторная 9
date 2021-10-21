@@ -22,7 +22,7 @@ int main() {
     int months, percents, depos;
     printf("Введите количество месяцев: ");
     scanf("%d", &months);
-    printf("Введите Процентную ставку: ");
+    printf("Введите процентную ставку: ");
     scanf("%d", &percents);
     printf("Введите депозит: ");
     scanf("%d", &depos);
